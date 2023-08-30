@@ -13,7 +13,7 @@ const Stats = ({ items }) => {
   );
 
   const percentage = 100 - ((numItems - packedItems) / numItems) * 100;
-  console.log(packedItems);
+
   return (
     <footer className="stats">
       {numItems === packedItems ? (

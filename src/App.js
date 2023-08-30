@@ -3,7 +3,7 @@ import Form from "./components/form/Form";
 import PackingList from "./components/packing-list/PackingList";
 import Stats from "./components/stats/Stats";
 import { useState } from "react";
-import { initialItems } from "./sources/data/data";
+
 function App() {
   const [items, setItems] = useState([]);
 
@@ -25,6 +25,9 @@ function App() {
       )
     );
   };
+  const handlerReset = () => {
+    setItems([]);
+  };
 
   console.log(items);
   return (
@@ -35,6 +38,7 @@ function App() {
         items={items}
         handlerDeleteItem={handlerDeleteItem}
         onPack={handlerPacking}
+        onReset={handlerReset}
       />
       <Stats items={items} />
     </div>
