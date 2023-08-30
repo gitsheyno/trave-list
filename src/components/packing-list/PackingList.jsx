@@ -1,7 +1,7 @@
 import React from "react";
 import Item from "../item/Item";
 
-const PackingList = ({ items, handlerDeleteItem }) => {
+const PackingList = ({ items, handlerDeleteItem, onPack }) => {
   const onDelete = (id) => {
     handlerDeleteItem(id);
   };
@@ -18,6 +18,7 @@ const PackingList = ({ items, handlerDeleteItem }) => {
               packed={packed}
               id={id}
               onDelete={onDelete}
+              onPack={onPack}
             />
           );
         })}

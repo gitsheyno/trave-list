@@ -5,7 +5,7 @@ import Stats from "./components/stats/Stats";
 import { useState } from "react";
 import { initialItems } from "./sources/data/data";
 function App() {
-  const [items, setItems] = useState(initialItems);
+  const [items, setItems] = useState([]);
 
   const handlerAddNewItems = (newItem) => {
     setItems((prevItems) => [...prevItems, newItem]);
@@ -18,13 +18,25 @@ function App() {
     });
   };
 
+  const handlerPacking = (id) => {
+    setItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
+
   console.log(items);
   return (
     <div className="app">
       <Logo />
       <Form handlerAddNewItems={handlerAddNewItems} />
-      <PackingList items={items} handlerDeleteItem={handlerDeleteItem} />
-      <Stats />
+      <PackingList
+        items={items}
+        handlerDeleteItem={handlerDeleteItem}
+        onPack={handlerPacking}
+      />
+      <Stats items={items} />
     </div>
   );
 }
